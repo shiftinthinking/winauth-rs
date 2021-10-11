@@ -971,6 +971,12 @@ impl<'a> NextBytes for NtlmV2Client<'a> {
     }
 }
 
+impl<'a> crate::http::Authenticator for NtlmV2Client<'a> {
+    fn auth_scheme(&self) -> &'static str {
+        "NTLM"
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::ntowfv2;
